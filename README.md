@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.com/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.com/deftio/travis-ci-cpp-example)
-[![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
+[![CircleCI](https://circleci.com/gh/eriktuantran/leetcode/tree/main.svg?style=shield)](https://app.circleci.com/pipelines/github/eriktuantran/leetcode)
 
 ## Purpose:
 
