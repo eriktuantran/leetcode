@@ -5,7 +5,7 @@ set(PROJECT_NAME project1)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_FLAGS "-g -Wall")
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 # If you want your own include/ directory, set this, and then you can do
 # include_directories(${COMMON_INCLUDES}) in other CMakeLists.txt files.
@@ -14,11 +14,11 @@ set(CMAKE_CXX_STANDARD 11)
 #----------------------------------------------------------------------------
 # Define project sources and includes
 #----------------------------------------------------------------------------
-set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
+set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/solutions)
 include_directories(${COMMON_INCLUDES})
-file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
-file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
-list(REMOVE_ITEM SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp)
+file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cc ${PROJECT_SOURCE_DIR}/solutions/*.cc)
+file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cc)
+list(REMOVE_ITEM SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cc)
 
 
 
@@ -26,7 +26,7 @@ list(REMOVE_ITEM SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp)
 # Normal Libraries & Executables
 ################################
 add_library(project1_lib ${SRC_FILES})
-add_executable(project1 ${PROJECT_SOURCE_DIR}/src/main.cpp)
+add_executable(project1 ${PROJECT_SOURCE_DIR}/src/main.cc)
 # Key idea: SEPARATE OUT your main() function into its own file so it can be its
 # own executable. Separating out main() means you can add this library to be
 # used elsewhere (e.g linking to the test executable).

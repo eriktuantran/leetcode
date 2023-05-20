@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "gtest/gtest.h"
-#include "project1.h"
+#include "0217-contains-duplicate.hh"
 
 // IndependentMethod is a test case - here, we have 2 tests for this 1 test case
 TEST(IndependentMethod, ResetsToZero) {
@@ -21,16 +21,16 @@ TEST(IndependentMethod, ResetsToZero2) {
 }
 
 // The fixture for testing class Project1. From google test primer.
-class Project1Test : public ::testing::Test {
+class TestSuite : public ::testing::Test {
  protected:
   // You can remove any or all of the following functions if its body
   // is empty.
 
-  Project1Test() {
+  TestSuite() {
     // You can do set-up work for each test here.
   }
 
-  virtual ~Project1Test() {
+  virtual ~TestSuite() {
     // You can do clean-up work that doesn't throw exceptions here.
   }
 
@@ -47,15 +47,15 @@ class Project1Test : public ::testing::Test {
   }
 
   // Objects declared here can be used by all tests in the test case for Project1.
-  Project1 p;
+  Solution s;
 };
 
 // Test case must be called the class above
 // Also note: use TEST_F instead of TEST to access the test fixture (from google test primer)
-TEST_F(Project1Test, MethodBarDoesAbc) {
-  int i = 0;
-  p.foo(i);  // we have access to p, declared in the fixture
-  EXPECT_EQ(1, i);
+
+TEST_F(TestSuite, containsDuplicate) {
+  std::vector<int> v = {1, 2, 3, 4, 1};
+  EXPECT_EQ(true, s.containsDuplicate(v));
 }
 
 // }  // namespace - could surround Project1Test in a namespace

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "project1.h"
+#include "0217-contains-duplicate.hh"
 
 using namespace std;
 
@@ -9,7 +9,7 @@ int main() {
 	cout << x << endl;
 	independentMethod(x);
 	cout << x << endl;
-	Project1 p;
-	p.foo(x);
-	cout << x << endl;
+	vector<int> v = {1, 2, 3, 4, 5};
+	Solution s;
+	cout << (s.containsDuplicate(v)?"true":"false") << endl;
 }
