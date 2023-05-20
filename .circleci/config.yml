@@ -25,7 +25,7 @@ jobs:
       TEST_RESULTS: /tmp/test-results
     steps:
         - run:
-            name: Install CMake
+            name: Install dependencies
             command: |
               sudo apt -y -q update
               sudo apt -y -q install cmake
@@ -57,12 +57,13 @@ jobs:
             command: |
               # The "environment:" option doesn't expand vars.
               mkdir -p $TEST_RESULTS
-              lcov --directory . --capture --output-file $TEST_RESULTS/coverage.info
-              lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' --output-file $TEST_RESULTS/coverage.info
-              lcov --list $TEST_RESULTS/coverage.info
+              COV_FILE=$TEST_RESULTS/coverage.info
+              lcov --directory . --capture --output-file $COV_FILE
+              lcov --remove $COV_FILE 'tests/*' '/usr/*' 'test-library*' --output-file $COV_FILE
+              lcov --list $COV_FILE
         - store_test_results:
             # This option doesn't expand $TEST_RESULTS if used.
-            path: /tmp/test-results
+            path: $TEST_RESULTS
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
