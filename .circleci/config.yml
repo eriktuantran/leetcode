@@ -29,7 +29,11 @@ jobs:
             command: |
               sudo apt -y -q update
               sudo apt -y -q install cmake
-        - checkout
+              sudo apt -y -q install lcov
+        - checkout:
+            post:
+              - git submodule init
+              - git submodule update
         - run:
             name: CMake build files
             command: |
