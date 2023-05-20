@@ -1,26 +1,14 @@
-[![Build Status](https://travis-ci.com/gujans/travis-gtest-cmake-example.svg?branch=master)](https://travis-ci.com/gujans/travis-gtest-cmake-example)[![codecov](https://codecov.io/gh/gujans/travis-gtest-cmake-example/branch/master/graph/badge.svg)](https://codecov.io/gh/gujans/travis-gtest-cmake-example)
+[![Build Status](https://travis-ci.com/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.com/deftio/travis-ci-cpp-example)
+[![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
 
-i
-# What is this?
-This is an example setup of Travis-CI with cmake and google test. I finally got all three working together nicely with the help of [dmonopoly's cmake and gtest example](https://github.com/dmonopoly/gtest-cmake-example). Hopefully it'll help someone get set up with cmake and google test on travis-ci.
+## Purpose:
 
-# Where are things?
-`build/` is where code is built - like where executables are.  
-`ext/` includes googletest framework (git submodule)
-`inlcude/` is where the header files are located (here: project1.h)
-`src/` is where the source files are located (here: project1.cpp, main.cpp)
-`test/` is where the test source files are located (here: test_project1.cpp)
-Rest of code in root:  
--`CMakeLists.txt` must be in each subdirectory of the project  
+A placeholder for leetcode challenges that I have solved.
 
-# What do I do?
+## Use it locally:
 
-## Use it on Travis-CI:
-Please look at the travis.yml file to see the setup of travis. As the gtest library is located within your project. The procedure on Travis is quite simple. Note that I used a more recent version of `cmake` as provided in the `ubuntu precise` repositories. This is needed for the relatively recent command `REMOVE_ITEM` to exclude the `main.cpp` from the source file list as I am lazy and did not want to write out the files by name.
-
-## Use it locally: 
-If you want to test it all out through the common gtest procedure, first
-**delete build/** (if present). Then...
+If you want to test it all out through the common gtest procedure, first delete
+**build** (if present). Then...
 
 In the project root:
 
@@ -37,6 +25,10 @@ To prepare all your tests, run this:
 
     cmake -DBUILD_TESTS=ON ..
 
+To setup target for coverage, run this:
+
+    cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Coverage
+
 To run all tests easily,
 
     make test
@@ -47,14 +39,20 @@ description
 [here](http://stackoverflow.com/questions/5998186/cmake-adding-command-line-options).
 
 ### Run executables
+
 Then you can do ./myexecutable for the generated executable, e.g.:
 
-    ./project1
+    ./leetcode
 
 and if you did cmake with BUILD_TESTS=ON:
 
     ./runUnitTests
 
-# Acknowledgement and further details
-This repository is based on the works of David Y. Zhang in [this](https://github.com/dmonopoly/gtest-cmake-example) repository. He spent a lot of time figuring out all the details for cmake and gtest. Please refer to his repository README for more detail on his approach.
+code coverage
 
+    ./lcov --directory . --capture --output-file coverage.info
+    ./lcov --list coverage.info
+
+# Acknowledgement and further details
+
+This repository is based on the works of Gunnar in [this](https://github.com/grvlbit/travis-gtest-cmake-example) repository. He spent a lot of time figuring out all the details for cmake and gtest. Please refer to his repository README for more detail on his approach.
