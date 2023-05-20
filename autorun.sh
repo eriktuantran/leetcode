@@ -1,8 +1,7 @@
 mkdir build
-rm -rf build/*
 cd build
-make clean
 cmake ..
+find . -name "*.gcda" -print0 | xargs -0 rm
 make -j8
 ./runUnitTests
 lcov --directory . --capture --output-file coverage.info
