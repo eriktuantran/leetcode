@@ -32,9 +32,12 @@ jobs:
               sudo apt -y -q install lcov
         - checkout
         - run:
-            name: CMake build files
+            name: Init git submodule
             command: |
               git submodule update --init --recursive
+        - run:
+            name: CMake build files
+            command: |
               mkdir build
               cd build
               cmake ..
@@ -49,6 +52,14 @@ jobs:
               mkdir -p $TEST_RESULTS
               cd build
               GTEST_COLOR=1 ctest -V
+        - run:
+            name: Run coverage
+            command: |
+              # The "environment:" option doesn't expand vars.
+              mkdir -p $TEST_RESULTS
+              lcov --directory . --capture --output-file $TEST_RESULTS/coverage.info
+              lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' --output-file $TEST_RESULTS/coverage.info
+              lcov --list $TEST_RESULTS/coverage.info
         - store_test_results:
             # This option doesn't expand $TEST_RESULTS if used.
             path: /tmp/test-results
