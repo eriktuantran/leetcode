@@ -1,5 +1,5 @@
-[![CircleCI](https://circleci.com/gh/eriktuantran/leetcode/tree/main.svg?style=shield)](https://app.circleci.com/pipelines/github/eriktuantran/leetcode)
-
+[![CircleCI](https://circleci.com/gh/eriktuantran/leetcode/tree/main.svg?style=shield)](https://app.circleci.com/pipelines/github/eriktuantran/leetcode) $~$
+[![build](https://github.com/eriktuantran/leetcode/actions/workflows/build.yml/badge.svg)](https://codecov.io/gh/eriktuantran/leetcode) $~$
 [![codecov](https://codecov.io/gh/eriktuantran/leetcode/branch/main/graph/badge.svg?token=081P9ZNPMT)](https://codecov.io/gh/eriktuantran/leetcode)
 
 ## Purpose:
