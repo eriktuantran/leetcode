@@ -65,7 +65,7 @@ if (BUILD_TESTS)
   # manually running the executable runUnitTests to see those specific tests.
   add_test(UnitTests runUnitTests)
 
-  set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/.travis/cmake)
+  set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/)
 
   if (CMAKE_BUILD_TYPE STREQUAL "Coverage")
     include(CodeCoverage)
