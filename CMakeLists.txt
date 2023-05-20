@@ -5,6 +5,7 @@ set(PROJECT_NAME project1)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_FLAGS "-g -Wall")
+set(CMAKE_CXX_STANDARD 11)
 
 # If you want your own include/ directory, set this, and then you can do
 # include_directories(${COMMON_INCLUDES}) in other CMakeLists.txt files.
@@ -19,7 +20,7 @@ file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 list(REMOVE_ITEM SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp)
 
-set(CMAKE_CXX_STANDARD 11)
+
 
 ################################
 # Normal Libraries & Executables
@@ -36,12 +37,12 @@ target_link_libraries(project1 project1_lib)
 # Testing
 ################################
 
-# Options. Turn on with 'cmake -Dmyvarname=ON'.
-option(BUILD_TESTS "Build all tests." OFF) # Makes boolean 'test' available.
+# Options. Turn off with 'cmake -Dmyvarname=OFF'.
+option(BUILD_TESTS "Build all tests." ON) # Makes boolean 'test' available.
 
 if (BUILD_TESTS)
   # This adds another subdirectory, which has 'project(gtest)'.
-  add_subdirectory(ext/googletest)
+  add_subdirectory(modules/googletest)
 
   enable_testing()
 

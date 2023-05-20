@@ -1,3 +1,5 @@
-[submodule "ext/googletest"]
-	path = ext/googletest
+
+[submodule "modules/googletest"]
+	path = modules/googletest
 	url = https://github.com/google/googletest
+	ignore = dirty
