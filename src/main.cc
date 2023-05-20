@@ -1,6 +1,8 @@
 #include <iostream>
 #include "0217-contains-duplicate.hh"
 
+#THIS WILL BE FAILED
+
 using namespace std;
 
 int main() {
