@@ -64,6 +64,8 @@ jobs:
         - store_test_results:
             # This option doesn't expand $TEST_RESULTS if used.
             path: /tmp/test-results
+        - store_artifacts:
+            path: /tmp/test-results
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
