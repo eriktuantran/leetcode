@@ -16,7 +16,6 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}.
-
       - name : Install dependencies
         run: |
           sudo apt -y -q install cmake 
