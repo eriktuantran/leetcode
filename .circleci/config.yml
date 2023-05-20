@@ -59,7 +59,7 @@ jobs:
               mkdir -p $TEST_RESULTS
               COV_FILE=$TEST_RESULTS/coverage.info
               lcov --directory . --capture --output-file $COV_FILE
-              lcov --remove $COV_FILE 'tests/*' 'modules/*' '/usr/*' 'test-library*' --output-file $COV_FILE
+              lcov --remove $COV_FILE 'tests/*' 'modules/*' '*modules/googletest*' '/usr/*' 'test-library*' --output-file $COV_FILE
               lcov --list $COV_FILE
         - store_test_results:
             # This option doesn't expand $TEST_RESULTS if used.
