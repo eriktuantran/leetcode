@@ -44,6 +44,5 @@ jobs:
               lcov --directory . --capture --output-file $COV_FILE
               lcov --remove $COV_FILE 'tests/*' 'modules/*' '*modules/googletest*' '/usr/*' 'test-library*' --output-file $COV_FILE
               lcov --list $COV_FILE
-              tree .
       - name: Check coverage reports by Codecov
         uses: codecov/codecov-action@v3
