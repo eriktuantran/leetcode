@@ -63,7 +63,7 @@ jobs:
               lcov --list $COV_FILE
         - store_test_results:
             # This option doesn't expand $TEST_RESULTS if used.
-            path: $TEST_RESULTS
+            path: /tmp/test-results
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
