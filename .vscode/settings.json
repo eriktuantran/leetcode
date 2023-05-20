@@ -1,0 +1,13 @@
+{
+  "C_Cpp.default.configurationProvider": "go2sh.cmake-integration",
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, ColumnLimit: 120}",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+    //☝🏼 Select the MS extension as defaultFormatter
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}
