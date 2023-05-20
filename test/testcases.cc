@@ -1,7 +1,8 @@
 #include <iostream>
 
-#include "gtest/gtest.h"
 #include "0217-contains-duplicate.hh"
+#include "gtest/gtest.h"
+#include "test-data.hh"
 
 // IndependentMethod is a test case - here, we have 2 tests for this 1 test case
 TEST(IndependentMethod, ResetsToZero) {
@@ -53,12 +54,23 @@ class TestSuite : public ::testing::Test {
 // Test case must be called the class above
 // Also note: use TEST_F instead of TEST to access the test fixture (from google test primer)
 
-TEST_F(TestSuite, containsDuplicate) {
-  std::vector<int> v = {1, 2, 3, 4, 1};
-  EXPECT_EQ(true, s.containsDuplicate(v));
-}
 TEST_F(TestSuite, notContainsDuplicate) {
-  std::vector<int> v = {1, 2, 3, 4, 5};
-  EXPECT_EQ(false, s.containsDuplicate(v));
+  EXPECT_EQ(false, s.containsDuplicate(contains_duplicate_data));
+  contains_duplicate_data.push_back(contains_duplicate_data[0]);
+  EXPECT_EQ(true, s.containsDuplicate(contains_duplicate_data));
 }
+
+TEST_F(TestSuite, containsNearbyDuplicate) {
+  EXPECT_EQ(false,
+            s.containsNearbyDuplicate(contains_near_by_duplicate_data.first, contains_near_by_duplicate_data.second));
+  int offset = 200;
+
+  unsigned vector_size = contains_near_by_duplicate_data.first.size();
+  unsigned k = contains_near_by_duplicate_data.second;
+  int random = rand() % 500;
+  contains_near_by_duplicate_data.first[vector_size - random - 1] =
+      contains_near_by_duplicate_data.first[vector_size - random - k];
+  EXPECT_EQ(true, s.containsNearbyDuplicate(contains_near_by_duplicate_data.first, k));
+}
+
 // }  // namespace - could surround Project1Test in a namespace

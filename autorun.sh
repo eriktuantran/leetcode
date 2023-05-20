@@ -1,5 +1,7 @@
 mkdir build
+rm -rf build/*
 cd build
+make clean
 cmake ..
 make -j8
 ./runUnitTests
