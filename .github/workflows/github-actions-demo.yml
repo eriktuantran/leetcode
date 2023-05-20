@@ -15,6 +15,36 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-      - name: Upload coverage reports to Codecov
+      - run: echo "🍏 This job's status is ${{ job.status }}.
+
+      - name : Install dependencies
+        run: |
+          sudo apt -y -q install cmake 
+          sudo apt -y -q install lcov
+      - name: Init git submodule
+        run: |
+            git submodule update --init --recursive
+      - name: build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make -j4
+      - name: run unit tests
+        run: |
+            TEST_RESULTS=./test-results
+            export GTEST_OUTPUT=xml:${TEST_RESULTS}/
+            mkdir -p $TEST_RESULTS
+            cd build
+            GTEST_COLOR=1 ctest -V
+      - name: run coverage
+        run: |
+              TEST_RESULTS=./test-results
+              mkdir -p $TEST_RESULTS
+              COV_FILE=$TEST_RESULTS/coverage.info
+              lcov --directory . --capture --output-file $COV_FILE
+              lcov --remove $COV_FILE 'tests/*' 'modules/*' '*modules/googletest*' '/usr/*' 'test-library*' --output-file $COV_FILE
+              lcov --list $COV_FILE
+              tree .
+      - name: Check coverage reports by Codecov
         uses: codecov/codecov-action@v3

@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/eriktuantran/leetcode/tree/main.svg?style=shield)](https://app.circleci.com/pipelines/github/eriktuantran/leetcode)
 
+[![codecov](https://codecov.io/gh/eriktuantran/leetcode/branch/main/graph/badge.svg?token=081P9ZNPMT)](https://codecov.io/gh/eriktuantran/leetcode)
+
 ## Purpose:
 
 A placeholder for leetcode challenges that I have solved.
