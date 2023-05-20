@@ -57,5 +57,8 @@ TEST_F(TestSuite, containsDuplicate) {
   std::vector<int> v = {1, 2, 3, 4, 1};
   EXPECT_EQ(true, s.containsDuplicate(v));
 }
-
+TEST_F(TestSuite, notContainsDuplicate) {
+  std::vector<int> v = {1, 2, 3, 4, 5};
+  EXPECT_EQ(false, s.containsDuplicate(v));
+}
 // }  // namespace - could surround Project1Test in a namespace
