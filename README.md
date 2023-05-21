@@ -6,6 +6,8 @@
 
 A placeholder for leetcode challenges that I have been solving.
 
+The test reports could be found in: [github actions](https://github.com/eriktuantran/leetcode/actions)
+
 ## Progress
 
 | Index | Link                                                                            | Status |
@@ -33,43 +35,41 @@ In the project root:
 
     mkdir build
     cd build
+
+To prepare executable, run this:
+
     cmake ..
-
-By now Makefiles should be created.
-Then, to build executables and do all that linking stuff,
-
-    make
 
 To prepare all your tests, run this:
 
-    cmake .. -DBUILD_TESTS=ON ..
+    cmake .. -DBUILD_TESTS=ON
 
 To setup target for coverage, run this:
 
     cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Coverage
 
-To run all tests easily,
+By now Makefiles should be created.
+Then, to build executables and do all that linking stuff, add (`-j<number-of-thread>`) to speed up.
 
-    make test
-    or
-    GTEST_COLOR=1 ctest -V
+    make -j8
+
+### Run executable
+
+    ./leetcode
 
 Note: `cmake -DBUILD_TESTS=ON` turns on the variable 'BUILD_TESTS', which is specified in the root
 CMakeLists.txt file. This is handy if you want to build in certain ways. Clear
 description
 [here](http://stackoverflow.com/questions/5998186/cmake-adding-command-line-options).
 
-### Run executables
-
-    ./leetcode
-
 and if you did cmake with BUILD_TESTS=ON:
 
     ./runUnitTests
+    or
+    GTEST_COLOR=1 ctest -V
 
-code coverage
+code coverage if you have -DCMAKE_BUILD_TYPE=Coverage
 
-    cd build
     lcov --directory . --capture --output-file coverage.info
     lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' '*modules/googletest*' '*MacOS*' --output-file coverage.info
     lcov --list coverage.info
