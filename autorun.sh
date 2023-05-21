@@ -5,6 +5,7 @@ find . -name "*.gcda" -print0 | xargs -0 rm
 make -j8
 
 #./runUnitTests
+TEST_RESULTS=./test-results
 export GTEST_OUTPUT=xml:${TEST_RESULTS}/
 GTEST_COLOR=1 ctest -V
 
