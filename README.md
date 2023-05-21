@@ -4,12 +4,18 @@
 
 ## Purpose:
 
-A placeholder for leetcode challenges that I have solved.
+A placeholder for leetcode challenges that I have been solving.
 
-## Use it locally:
+## Dependencies:
 
-If you want to test it all out through the common gtest procedure, first delete
-**build** (if present). Then...
+    sudo apt-get install cmake
+    sudo apt-get install lcov
+
+## Build:
+
+Fetch the submodules (googletest):
+
+    git submodule update --init --recursive
 
 In the project root:
 
@@ -41,8 +47,6 @@ description
 
 ### Run executables
 
-Then you can do ./myexecutable for the generated executable, e.g.:
-
     ./leetcode
 
 and if you did cmake with BUILD_TESTS=ON:
@@ -51,8 +55,10 @@ and if you did cmake with BUILD_TESTS=ON:
 
 code coverage
 
-    ./lcov --directory . --capture --output-file coverage.info
-    ./lcov --list coverage.info
+    cd build
+    lcov --directory . --capture --output-file coverage.info
+    lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' '*modules/googletest*' '*MacOS*' --output-file coverage.info
+    lcov --list coverage.info
 
 # Acknowledgement and further details
 
