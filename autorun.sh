@@ -2,7 +2,7 @@ echo "### Building..."
 mkdir -p build
 cd build
 cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Coverage
-find . -name "*.gcda" -print0 | xargs -0 rm
+find . -name "*.gcda" -print0 | xargs -0 -r rm
 make -j8
 
 echo "### Running tests..."
