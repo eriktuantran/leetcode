@@ -54,23 +54,34 @@ class TestSuite : public ::testing::Test {
 // Test case must be called the class above
 // Also note: use TEST_F instead of TEST to access the test fixture (from google test primer)
 
-TEST_F(TestSuite, notContainsDuplicate) {
-  EXPECT_EQ(false, s.containsDuplicate(contains_duplicate_data));
-  contains_duplicate_data.push_back(contains_duplicate_data[0]);
-  EXPECT_EQ(true, s.containsDuplicate(contains_duplicate_data));
+TEST_F(TestSuite, containsDuplicate) {
+  EXPECT_EQ(false, s.containsDuplicate(containsDuplicate_data));
+  containsDuplicate_data.push_back(containsDuplicate_data[0]);
+  EXPECT_EQ(true, s.containsDuplicate(containsDuplicate_data));
 }
 
 TEST_F(TestSuite, containsNearbyDuplicate) {
-  EXPECT_EQ(false,
-            s.containsNearbyDuplicate(contains_near_by_duplicate_data.first, contains_near_by_duplicate_data.second));
+  EXPECT_EQ(false, s.containsNearbyDuplicate(containsNearbyDuplicate_data.first, containsNearbyDuplicate_data.second));
   int offset = 200;
 
-  unsigned vector_size = contains_near_by_duplicate_data.first.size();
-  unsigned k = contains_near_by_duplicate_data.second;
+  unsigned vector_size = containsNearbyDuplicate_data.first.size();
+  unsigned k = containsNearbyDuplicate_data.second;
   int random = rand() % 500;
-  contains_near_by_duplicate_data.first[vector_size - random - 1] =
-      contains_near_by_duplicate_data.first[vector_size - random - k];
-  EXPECT_EQ(true, s.containsNearbyDuplicate(contains_near_by_duplicate_data.first, k));
+  containsNearbyDuplicate_data.first[vector_size - random - 1] =
+      containsNearbyDuplicate_data.first[vector_size - random - k];
+  EXPECT_EQ(true, s.containsNearbyDuplicate(containsNearbyDuplicate_data.first, k));
+}
+
+TEST_F(TestSuite, containsNearbyAlmostDuplicate) {
+  std::tuple<std::vector<int>, int, int> data = {{1, 2, 3, 1}, 3, 0};
+  EXPECT_EQ(true, s.containsNearbyAlmostDuplicate(std::get<0>(data), std::get<1>(data), std::get<2>(data)));
+
+  data = {{1, 5, 9, 1, 5, 9}, 2, 3};
+  EXPECT_EQ(false, s.containsNearbyAlmostDuplicate(std::get<0>(data), std::get<1>(data), std::get<2>(data)));
+
+  auto data_alias = &containsNearbyAlmostDuplicate_data;
+  EXPECT_EQ(false, s.containsNearbyAlmostDuplicate(std::get<0>(*data_alias), std::get<1>(*data_alias),
+                                                   std::get<2>(*data_alias)));
 }
 
 // }  // namespace - could surround Project1Test in a namespace

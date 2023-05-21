@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.8)
 set(PROJECT_NAME leetcode)
 project(${PROJECT_NAME})
 
-set(CMAKE_CXX_FLAGS "-g -Wall")
+set(CMAKE_CXX_FLAGS "-g -Wall ")
 set(CMAKE_CXX_STANDARD 17)
 
 # If you want your own include/ directory, set this, and then you can do
@@ -67,12 +67,12 @@ if (BUILD_TESTS)
 
   set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/)
 
-  #if (CMAKE_BUILD_TYPE STREQUAL "Coverage")
+  if (CMAKE_BUILD_TYPE STREQUAL "Coverage")
     include(CodeCoverage)
     setup_target_for_coverage(${PROJECT_NAME}_coverage runUnitTests coverage)
 
     SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
     SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
-  #endif() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
+  endif() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
 
 endif()
