@@ -2,11 +2,11 @@
 [![build](https://github.com/eriktuantran/leetcode/actions/workflows/main.yml/badge.svg)](https://github.com/eriktuantran/leetcode/actions)
 [![codecov](https://codecov.io/gh/eriktuantran/leetcode/branch/main/graph/badge.svg?token=081P9ZNPMT)](https://codecov.io/gh/eriktuantran/leetcode)
 
-## Purpose:
+## Purpose
 
 A placeholder for leetcode challenges that I have been solving.
 
-## Progress:
+## Progress
 
 | Index | Link                                                                            | Status |
 | :---- | :------------------------------------------------------------------------------ | :----: |
@@ -14,16 +14,20 @@ A placeholder for leetcode challenges that I have been solving.
 | 2     | [contains-duplicate-ii](https://leetcode.com/problems/contains-duplicate-ii/)   |   ✅   |
 | 3     | [contains-duplicate-iii](https://leetcode.com/problems/contains-duplicate-iii/) |   ❌   |
 
-## Dependencies:
+## Dependencies
 
     sudo apt-get install cmake
     sudo apt-get install lcov
 
-## Build:
-
 Fetch the submodules (googletest):
 
     git submodule update --init --recursive
+
+## Build and test (recommended)
+
+    ./autorun.sh
+
+## Build steps
 
 In the project root:
 
@@ -38,15 +42,17 @@ Then, to build executables and do all that linking stuff,
 
 To prepare all your tests, run this:
 
-    cmake -DBUILD_TESTS=ON ..
+    cmake .. -DBUILD_TESTS=ON ..
 
 To setup target for coverage, run this:
 
-    cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Coverage
+    cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Coverage
 
 To run all tests easily,
 
     make test
+    or
+    GTEST_COLOR=1 ctest -V
 
 Note: `cmake -DBUILD_TESTS=ON` turns on the variable 'BUILD_TESTS', which is specified in the root
 CMakeLists.txt file. This is handy if you want to build in certain ways. Clear
@@ -67,6 +73,7 @@ code coverage
     lcov --directory . --capture --output-file coverage.info
     lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' '*modules/googletest*' '*MacOS*' --output-file coverage.info
     lcov --list coverage.info
+    genhtml coverage.info --output-directory html-coverage
 
 # Acknowledgement and further details
 
