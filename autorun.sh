@@ -1,14 +1,17 @@
-mkdir build
+echo "### Building..."
+mkdir -p build
 cd build
 cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Coverage
 find . -name "*.gcda" -print0 | xargs -0 rm
 make -j8
 
+echo "### Running tests..."
 #./runUnitTests
 TEST_RESULTS=./test-results
 export GTEST_OUTPUT=xml:${TEST_RESULTS}/
 GTEST_COLOR=1 ctest -V
 
+echo "### Generating coverage report..."
 lcov --directory . --capture --output-file coverage.info
 lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' '*modules/googletest*' '*MacOS*' --output-file coverage.info &>/dev/null
 lcov --list coverage.info
@@ -21,7 +24,7 @@ if [ $# -eq 0 ]; then
 else
     TEST_REPORT_DIR=${1}
     mkdir -p ${TEST_REPORT_DIR}
-    echo "Copying test results to ${TEST_REPORT_DIR}"
+    echo "### Copying test results to ${TEST_REPORT_DIR}"
     cp -r build/coverage.info ${TEST_REPORT_DIR}
     cp -r build/html-coverage ${TEST_REPORT_DIR}
     cp -r build/test-results  ${TEST_REPORT_DIR}
