@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.16)
 
 # Make PROJECT_SOURCE_DIR, PROJECT_BINARY_DIR, and PROJECT_NAME available.
 set(PROJECT_NAME leetcode)
@@ -37,8 +37,8 @@ target_link_libraries(leetcode leetcode_lib)
 # Testing
 ################################
 
-# Options. Turn off with 'cmake -Dmyvarname=OFF'.
-option(BUILD_TESTS "Build all tests." ON) # Makes boolean 'test' available.
+# Options. Turn on with 'cmake -Dmyvarname=ON'.
+option(BUILD_TESTS "Build all tests." OFF) # Makes boolean 'test' available.
 
 if (BUILD_TESTS)
   # This adds another subdirectory, which has 'project(gtest)'.
