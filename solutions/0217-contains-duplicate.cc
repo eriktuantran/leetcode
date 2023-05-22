@@ -1,6 +1,9 @@
 #include "0217-contains-duplicate.hh"
 
+#include <time.h>
+
 #include <iostream>
+#include <thread>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -80,5 +83,40 @@ bool Solution::containsNearbyAlmostDuplicate(vector<int> &nums, int indexDiff, i
 
   return false;
 
+#endif
+}
+
+//  https://leetcode.com/problems/valid-anagram
+//  Input: s = "anagram", t = "nagaram"
+//  Output: true
+// #define my_isAnagram
+bool Solution::isAnagram(string s, string t) {
+#ifdef my_isAnagram
+  if (s.size() != t.size()) return false;
+  std::unordered_multiset<char> s_set(s.begin(), s.end());
+
+  for (auto &c : t) {
+    auto it = s_set.find(c);
+    if (it == s_set.end()) return false;
+    s_set.erase(it);
+  }
+  return true;
+
+#else
+
+  if (s.size() != t.size()) return false;
+
+  unordered_map<char, int> smap;
+  unordered_map<char, int> tmap;
+
+  for (int i = 0; i < s.size(); i++) {
+    smap[s[i]]++;
+    tmap[t[i]]++;
+  }
+
+  for (int i = 0; i < smap.size(); i++) {
+    if (smap[i] != tmap[i]) return false;
+  }
+  return true;
 #endif
 }

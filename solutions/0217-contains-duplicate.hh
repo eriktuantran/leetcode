@@ -8,6 +8,7 @@ class Solution {
   bool containsDuplicate(std::vector<int> &nums);
   bool containsNearbyDuplicate(std::vector<int> &nums, int k);
   bool containsNearbyAlmostDuplicate(std::vector<int> &nums, int indexDiff, int valueDiff);
+  bool isAnagram(string s, string t);
 };
 
 void independentMethod(int &i);

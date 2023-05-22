@@ -84,4 +84,10 @@ TEST_F(TestSuite, containsNearbyAlmostDuplicate) {
                                                    std::get<2>(*data_alias)));
 }
 
+TEST_F(TestSuite, isAnagram) {
+  EXPECT_EQ(true, s.isAnagram("anagram", "nagaram"));
+  EXPECT_EQ(false, s.isAnagram("rat", "car"));
+  EXPECT_EQ(true, s.isAnagram(isAnagram_data.first, isAnagram_data.second));
+}
+
 // }  // namespace - could surround Project1Test in a namespace
