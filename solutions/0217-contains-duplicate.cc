@@ -113,9 +113,10 @@ bool Solution::isAnagram(string s, string t) {
     smap[s[i]]++;
     tmap[t[i]]++;
   }
-
-  for (int i = 0; i < smap.size(); i++) {
-    if (smap[i] != tmap[i]) return false;
+  for (auto &iter : smap) {
+    if (smap[iter.first] != tmap[iter.first]) {
+      return false;
+    }
   }
   return true;
 #endif
