@@ -15,6 +15,7 @@ The test reports could be found in: [github actions](https://github.com/eriktuan
 | 1     | [contains-duplicate](https://leetcode.com/problems/contains-duplicate/)         |   ✅   |
 | 2     | [contains-duplicate-ii](https://leetcode.com/problems/contains-duplicate-ii/)   |   ✅   |
 | 3     | [contains-duplicate-iii](https://leetcode.com/problems/contains-duplicate-iii/) |   ❌   |
+| 4     | [valid-anagram](https://leetcode.com/problems/valid-anagram)                    |   ✅   |
 
 ## Dependencies
 
