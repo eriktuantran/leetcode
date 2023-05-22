@@ -4,6 +4,7 @@ cd build
 cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Coverage
 find . -name "*.gcda" -print0 | xargs -0 -r rm
 make -j8
+[[ $? == 0 ]] || exit $?
 
 echo "### Running tests..."
 #./runUnitTests
@@ -27,5 +28,5 @@ else
     echo "### Copying test results to ${TEST_REPORT_DIR}"
     cp -r build/coverage.info ${TEST_REPORT_DIR}
     cp -r build/html-coverage ${TEST_REPORT_DIR}
-    cp -r build/test-results  ${TEST_REPORT_DIR}
+    cp -r build/test-results ${TEST_REPORT_DIR}
 fi
