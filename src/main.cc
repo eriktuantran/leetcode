@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "array-and-hashing.hh"
+#include "solutions.hh"
 
 using namespace std;
 

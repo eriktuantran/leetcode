@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "array-and-hashing.hh"
+#include "solutions.hh"
 #include "gtest/gtest.h"
 #include "test-data.hh"
 
@@ -125,6 +125,13 @@ TEST_F(TestSuite, twoSum) {
     std::sort(expect.begin(), expect.end());
     std::sort(actual.begin(), actual.end());
     EXPECT_EQ(expect, actual);
+}
+
+TEST_F(TestSuite, isPalindrome) {
+    EXPECT_EQ(true, s.isPalindrome("A man, a plan, a canal: Panama"));
+    EXPECT_EQ(false, s.isPalindrome("race a car"));
+    EXPECT_EQ(true, s.isPalindrome(" "));
+    // EXPECT_EQ(true, s.isAnagram(isAnagram_data.first, isAnagram_data.second));
 }
 
 // }  // namespace - could surround Project1Test in a namespace

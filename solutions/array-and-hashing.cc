@@ -1,4 +1,4 @@
-#include "array-and-hashing.hh"
+#include "solutions.hh"
 
 #include <time.h>
 
