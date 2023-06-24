@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "0217-contains-duplicate.hh"
+#include "array-and-hashing.hh"
 #include "gtest/gtest.h"
 #include "test-data.hh"
 

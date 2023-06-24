@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "0217-contains-duplicate.hh"
+#include "array-and-hashing.hh"
 
 using namespace std;
 
 int main() {
-  Solution s;
-  s.isAnagram("anagram", "nagaram");
+    Solution s;
+    s.isAnagram("anagram", "nagaram");
 }
