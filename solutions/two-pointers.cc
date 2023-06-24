@@ -17,17 +17,17 @@ using namespace std; // I dont like this, but it's a leetcode thing
 bool Solution::isPalindrome(string s) {
     int i = 0, j = s.size() - 1;
     while (i < j) {
-        while (!isalnum(s[i]) && i < j) {
+        if (!isalnum(s[i]) && i < j) {
             i++;
-        }
-        while (!isalnum(s[j]) && j > i) {
+        } else if (!isalnum(s[j]) && j > i) {
+            j--;
+        } else {
+            if (tolower(s[i]) != tolower(s[j])) {
+                return false;
+            }
+            i++;
             j--;
         }
-        if (tolower(s[i]) != tolower(s[j])) {
-            return false;
-        }
-        i++;
-        j--;
     }
     return true;
 }
