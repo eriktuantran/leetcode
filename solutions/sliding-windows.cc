@@ -16,7 +16,7 @@
 // sell.
 int Solution::maxProfit(vector<int> &prices) {
     int max_profit = 0;
-    int min_price = INT_MAX;
+    int min_price = std::numeric_limits<int>::max();
     for (auto price : prices) {
         if (price < min_price) {
             min_price = price;
