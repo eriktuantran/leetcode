@@ -15,6 +15,9 @@ class Solution
 
     // Two Pointers
     bool isPalindrome(string s);
+
+    // Sliding Window
+    int maxProfit(vector<int> &prices);
 };
 
 void independentMethod(int &i);
