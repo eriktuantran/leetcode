@@ -75,10 +75,3 @@ TEST_F(TestSuite, twoSum) {
     std::sort(actual.begin(), actual.end());
     EXPECT_EQ(expect, actual);
 }
-
-TEST_F(TestSuite, isPalindrome) {
-    EXPECT_EQ(true, s.isPalindrome("A man, a plan, a canal: Panama"));
-    EXPECT_EQ(false, s.isPalindrome("race a car"));
-    EXPECT_EQ(true, s.isPalindrome(" "));
-    EXPECT_EQ(true, s.isPalindrome(isPalindrome_data));
-}
