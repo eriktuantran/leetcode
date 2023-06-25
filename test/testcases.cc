@@ -134,4 +134,12 @@ TEST_F(TestSuite, isPalindrome) {
     EXPECT_EQ(true, s.isPalindrome(isPalindrome_data));
 }
 
+TEST_F(TestSuite, maxProfit) {
+    std::vector<int> data = { 7, 1, 5, 3, 6, 4 };
+    EXPECT_EQ(5, s.maxProfit(data));
+    data = { 7, 6, 4, 3, 1 };
+    EXPECT_EQ(0, s.maxProfit(data));
+    EXPECT_EQ(999, s.maxProfit(maxProfit_data));
+}
+
 // }  // namespace - could surround Project1Test in a namespace
