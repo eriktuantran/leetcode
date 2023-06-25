@@ -3,8 +3,10 @@
     {
       "name": "Mac",
       "includePath": [
-        "${workspaceFolder}/**",
-        "/Users/tuantran/developer/boost_1_81_0/**"
+        "/Users/tuantran/developer/boost_1_81_0/**",
+        "${workspaceFolder}/solutions",
+        "${workspaceFolder}/test",
+        "${workspaceFolder}/**/*"
       ],
       "defines": [],
       "macFrameworkPath": [
