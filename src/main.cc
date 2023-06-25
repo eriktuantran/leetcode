@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "solutions.hh"
 
 using namespace std;
